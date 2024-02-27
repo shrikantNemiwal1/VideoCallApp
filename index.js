@@ -19,7 +19,7 @@ const expressServer = https.createServer({ key, cert }, app);
 const io = socketio(expressServer, {
   cors: {
     origin: [
-      "http://localhost:5173",
+      "https://video-call-app-pied.vercel.app:5173",
       // 'https://LOCAL-DEV-IP-HERE' //if using a phone or another computer
     ],
     methods: ["GET", "POST"],
