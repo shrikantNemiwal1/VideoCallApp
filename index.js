@@ -19,8 +19,11 @@ const expressServer = https.createServer({ key, cert }, app);
 const io = socketio(expressServer, {
   cors: {
     origin: [
-      "https://video-call-app-pied.vercel.app:5173",
-      // 'https://LOCAL-DEV-IP-HERE' //if using a phone or another computer
+      "https://192.168.32.99:5173",
+      "https://localhost:5173",
+      "http://192.168.32.99:5173",
+      "http://localhost:5173",
+      "https://videocallapp2.netlify.app",
     ],
     methods: ["GET", "POST"],
   },
