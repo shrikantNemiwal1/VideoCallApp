@@ -28,7 +28,7 @@ const io = socketio(expressServer, {
     methods: ["GET", "POST"],
   },
 });
-expressServer.listen(8181);
+expressServer.listen(3000);
 
 //offers will contain {}
 const offers = [
