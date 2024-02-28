@@ -28,7 +28,9 @@ const io = socketio(expressServer, {
     methods: ["GET", "POST"],
   },
 });
-expressServer.listen(3000);
+expressServer.listen(3000, "0.0.0.0", () =>
+  console.log("app listening to port 3000")
+);
 
 //offers will contain {}
 const offers = [
