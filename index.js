@@ -3,7 +3,7 @@ const https = require("https");
 const express = require("express");
 const app = express();
 const socketio = require("socket.io");
-app.use(express.static(__dirname));
+// app.use(express.static(__dirname));
 
 //we need a key and cert to run https
 //we generated them with mkcert
