@@ -43,6 +43,10 @@ const connectedSockets = [
   //username, socketId
 ];
 
+app.get("/", (req, res) => {
+  res.send({ msg: "Server is running on port 8181" });
+});
+
 io.on("connection", (socket) => {
   // console.log("Someone has connected");
   const userName = socket.handshake.auth.userName;
