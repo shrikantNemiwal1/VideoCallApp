@@ -45,7 +45,10 @@ const connectedSockets = [
   //username, socketId
 ];
 
+console.log("server running")
+
 app.get("/", (req, res) => {
+  console.log("new get req")
   res.send({ msg: "Server is running on port 8181" });
 });
 
