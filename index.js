@@ -9,12 +9,28 @@ const socketio = require("socket.io");
 //we generated them with mkcert
 // $ mkcert create-ca
 // $ mkcert create-cert
-const key = fs.readFileSync("cert.key");
-const cert = fs.readFileSync("cert.crt");
+const privateKey = fs.readFileSync(
+  "/etc/letsencrypt/live/backend.codespaces.online/privkey.pem",
+  "utf8"
+);
+const certificate = fs.readFileSync(
+  "/etc/letsencrypt/live/backend.codespaces.online/cert.pem",
+  "utf8"
+);
+const ca = fs.readFileSync(
+  "/etc/letsencrypt/live/backend.codespaces.online/fullchain.pem",
+  "utf8"
+);
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca,
+};
 
 //we changed our express setup so we can use https
 //pass the key and cert to createServer on https
-const expressServer = https.createServer({ key, cert }, app);
+const expressServer = https.createServer(credentials, app);
 //create our socket.io server... it will listen to our express port
 const io = socketio(expressServer, {
   cors: {
@@ -45,10 +61,10 @@ const connectedSockets = [
   //username, socketId
 ];
 
-console.log("server running")
+console.log("server running");
 
 app.get("/", (req, res) => {
-  console.log("new get req")
+  console.log("new get req");
   res.send({ msg: "Server is running on port 8181" });
 });
 
